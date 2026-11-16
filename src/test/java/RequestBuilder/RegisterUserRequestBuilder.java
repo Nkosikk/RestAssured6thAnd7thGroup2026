@@ -10,6 +10,8 @@ import static PayloadBuilder.RegisterUserPayload.registerUserPayload;
 
 public class RegisterUserRequestBuilder {
 
+    private static String registerUserId;
+
     public static Response registerUser()
     {
         String firstName = generateFirstName();
@@ -29,7 +31,13 @@ public class RegisterUserRequestBuilder {
                 .log().all()
                 .extract()
                 .response();
+
+        registerUserId = response.jsonPath().getString("data.id");
         return response;
+    }
+
+    public static String getRegisteredUserId(){
+        return registerUserId;
     }
 
 }
