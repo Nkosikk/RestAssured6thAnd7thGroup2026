@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .kotlin
+.ai-code-tracking.json
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
