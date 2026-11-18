@@ -25,4 +25,8 @@ public class TestData {
     }
     public static String GroupID = "92833dab-c6eb-41ac-bc8c-dbe6b35d58e3";
 
-}
+    public static String adminEmail = "sixolilemjikwa@gmail.com";
+    public static String adminPassword = "Chicco@2010";
+    }
+
+

@@ -1,5 +1,6 @@
 package Tests;
 
+import RequestBuilder.AdminRequestBuilder;
 import RequestBuilder.RegisterUserRequestBuilder;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
@@ -17,6 +18,16 @@ public class NdosiApiTests {
         assertEquals(response.getStatusCode(),201,"Expected status code 201 for a successful user registration");
         assertNotNull(RegisterUserRequestBuilder.getRegisteredUserId(),"User Id should not be null");
         System.out.println("Registered User ID: " + RegisterUserRequestBuilder.getRegisteredUserId());
+
+    }
+    @Test
+    public void testAdminLogin()
+    {
+        Response response = AdminRequestBuilder.AdminLogin();
+
+        assertEquals(response.getStatusCode(),200,"Expected status code 200 for a successful admin login");
+        assertNotNull(AdminRequestBuilder.getAdminToken(),"Admin Token should not be null");
+        System.out.println("Admin Token: " + AdminRequestBuilder.getAdminToken());
 
     }
 }
