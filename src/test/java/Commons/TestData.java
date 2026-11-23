@@ -20,8 +20,13 @@ public class TestData {
     }
     public static String generatePassword()
     {
-        return faker.internet().password(8,16,true,true);
+        String password;
+        do
+            {
+                password = faker.internet().password(8, 16, true, true);
+            }while (!password.matches(".*[!@#$%^&*()].*"));
 
+        return password;
     }
     public static String GroupID = "92833dab-c6eb-41ac-bc8c-dbe6b35d58e3";
 

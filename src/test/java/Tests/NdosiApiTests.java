@@ -10,7 +10,7 @@ import static org.testng.Assert.assertNotNull;
 
 public class NdosiApiTests {
 
-    @Test
+    @Test(priority = 1)
     public void testRegisterUser()
     {
         Response response = RegisterUserRequestBuilder.registerUser();
@@ -20,7 +20,7 @@ public class NdosiApiTests {
         System.out.println("Registered User ID: " + RegisterUserRequestBuilder.getRegisteredUserId());
 
     }
-    @Test
+    @Test(priority = 2)
     public void testAdminLogin()
     {
         Response response = AdminRequestBuilder.AdminLogin();
@@ -30,11 +30,23 @@ public class NdosiApiTests {
         System.out.println("Admin Token: " + AdminRequestBuilder.getAdminToken());
     }
 
-    @Test(dependsOnMethods = "testAdminLogin")
+    @Test(priority = 3)
+    public void adminApproveUser()
+    {
+        String userId = RegisterUserRequestBuilder.getRegisteredUserId();
+
+        Response response = AdminRequestBuilder.adminApproveUser(userId);
+        assertEquals(response.getStatusCode(),200,"Expected status code 200 for a successful admin user approval");
+
+    }
+    @Test(priority = 4)
     public void viewAdminProfile()
     {
         Response response = AdminRequestBuilder.AdminUserProfile();
         assertEquals(response.getStatusCode(),200,"Expected status code 200 for a successful admin user profile");
         assertEquals(response.jsonPath().getString("data.FirstName"),"Sisa");
     }
+
+
+
 }

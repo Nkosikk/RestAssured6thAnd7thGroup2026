@@ -48,6 +48,21 @@ public class AdminRequestBuilder {
                 .response();
         return response;
     }
+public static Response adminApproveUser(String userId)
+{
+    String approvePath = APPROVE_USER_PATH.replace("{userId}",userId);
 
+    Response response = RestAssured.given()
+            .log().all()
+            .baseUri(BASE_URL)
+            .basePath(approvePath)
+            .header("Authorization","Bearer "+adminToken)
+            .put()
+            .then()
+            .log().all()
+            .extract()
+            .response();
+    return response;
+}
 
 }
