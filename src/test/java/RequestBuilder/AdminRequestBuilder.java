@@ -1,6 +1,7 @@
 package RequestBuilder;
 
 import io.restassured.RestAssured;
+import io.restassured.internal.RestAssuredResponseImpl;
 import io.restassured.response.Response;
 
 import static Commons.BasePaths.*;
@@ -33,4 +34,15 @@ public class AdminRequestBuilder {
     public static String getAdminToken(){
         return adminToken;
     }
+
+    public static Response AdminUserProfile(){
+        Response response = RestAssured.given()
+                .log().all()
+                .baseUri(BASE_URL)
+                .basePath(VIEW_PROFILE)
+
+
+    }
+
+
 }
