@@ -40,8 +40,13 @@ public class AdminRequestBuilder {
                 .log().all()
                 .baseUri(BASE_URL)
                 .basePath(VIEW_PROFILE)
-
-
+                .header("Authorization","Bearer "+adminToken)
+                .get()
+                .then()
+                .log().all()
+                .extract()
+                .response();
+        return response;
     }
 
 

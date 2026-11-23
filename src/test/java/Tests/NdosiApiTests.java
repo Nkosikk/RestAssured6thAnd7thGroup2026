@@ -28,6 +28,13 @@ public class NdosiApiTests {
         assertEquals(response.getStatusCode(),200,"Expected status code 200 for a successful admin login");
         assertNotNull(AdminRequestBuilder.getAdminToken(),"Admin Token should not be null");
         System.out.println("Admin Token: " + AdminRequestBuilder.getAdminToken());
+    }
 
+    @Test(dependsOnMethods = "testAdminLogin")
+    public void viewAdminProfile()
+    {
+        Response response = AdminRequestBuilder.AdminUserProfile();
+        assertEquals(response.getStatusCode(),200,"Expected status code 200 for a successful admin user profile");
+        assertEquals(response.jsonPath().getString("data.FirstName"),"Sisa");
     }
 }
