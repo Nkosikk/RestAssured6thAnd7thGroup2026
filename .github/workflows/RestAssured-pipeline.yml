@@ -30,5 +30,6 @@ jobs:
         if : always()
         uses: action/upload-artifact@v4
 
-        with: allure-results
-        path: allure-results/
+        with:
+         name: allure-results
+         path: allure-results/
