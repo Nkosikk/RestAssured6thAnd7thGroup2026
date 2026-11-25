@@ -27,7 +27,7 @@ public class TestData {
             }while (!password.matches(".*[!@#$%^&*()].*"));
         return password;
     }
-    public static String GroupID = "92833dab-c6eb-41ac-bc8c-dbe6b35d58e3";
+    public static String GroupID = "92833dab-c6eb-41ac-bc8c-dbe6b35d58e";
 
     public static String adminEmail = "sixolilemjikwa@gmail.com";
     public static String adminPassword = "Chicco@2010";
